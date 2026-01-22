@@ -28,13 +28,16 @@ namespace MyAcademyMediatorProject.Repositories
 
         public async Task<List<TEntity>> GetAllAsync(params Expression<Func<TEntity, object>>[] includes)
         {
-            var query = context.Set<TEntity>();
+            var query = context.Set<TEntity>().AsNoTracking();
+
             foreach (var include in includes)
             {
-                query.Include(include);
+                query = query.Include(include);
             }
-            return await query.AsNoTracking().ToListAsync();
+
+            return await query.ToListAsync();
         }
+
 
         public async Task<TEntity> GetByIdAsync(Guid id)
         {

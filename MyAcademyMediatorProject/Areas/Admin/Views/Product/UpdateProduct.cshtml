@@ -1,0 +1,24 @@
+﻿@model GetProductByIdQueryResult
+@{
+    ViewData["Title"] = "UpdateProduct";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Ürün Güncelle</h1>
+
+<form method="post">
+    <input type="hidden" asp-for="Id" />
+    <label>Ürün Adı</label>
+    <input type="text" asp-for="Name" class="form-control" />
+    <br />
+    <label>Fiyat</label>
+    <input type="text" asp-for="Price" class="form-control" />
+    <br />
+    <label>Stok</label>
+    <input type="text" asp-for="Stock" class="form-control" />
+    <br />
+    <label>Kategori</label>
+    <select asp-for="CategoryId" class="form-control" asp-items="@ViewBag.categories"></select>
+    <br />
+    <button class="btn btn-dark">Güncelle</button>
+</form>
